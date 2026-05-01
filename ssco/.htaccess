@@ -1,0 +1,31 @@
+# /ssco/
+# Persistent identifiers for the SSCO ontology.
+#
+# Maintainer:
+# Shihang Zhang
+# GitHub: Shihang-Z
+
+RewriteEngine On
+
+# Content negotiation for RDF serializations
+RewriteCond %{HTTP_ACCEPT} text/turtle
+RewriteRule ^$ https://shihang-z.github.io/SSCO/ontology.ttl [R=303,L]
+
+RewriteCond %{HTTP_ACCEPT} application/rdf\+xml [OR]
+RewriteCond %{HTTP_ACCEPT} application/owl\+xml
+RewriteRule ^$ https://shihang-z.github.io/SSCO/ontology.owl [R=303,L]
+
+RewriteCond %{HTTP_ACCEPT} application/ld\+json
+RewriteRule ^$ https://shihang-z.github.io/SSCO/ontology.jsonld [R=303,L]
+
+RewriteCond %{HTTP_ACCEPT} application/n-triples
+RewriteRule ^$ https://shihang-z.github.io/SSCO/ontology.nt [R=303,L]
+
+# HTML documentation as default representation
+RewriteRule ^$ https://shihang-z.github.io/SSCO/ [R=303,L]
+
+# Explicit file-like aliases
+RewriteRule ^ontology.ttl$ https://shihang-z.github.io/SSCO/ontology.ttl [R=303,L]
+RewriteRule ^ontology.owl$ https://shihang-z.github.io/SSCO/ontology.owl [R=303,L]
+RewriteRule ^ontology.jsonld$ https://shihang-z.github.io/SSCO/ontology.jsonld [R=303,L]
+RewriteRule ^ontology.nt$ https://shihang-z.github.io/SSCO/ontology.nt [R=303,L]
